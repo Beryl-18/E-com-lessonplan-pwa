@@ -1,0 +1,22 @@
+{
+  "name": "e-commerce-lesson-plan-nodejs-",
+  "version": "1.0.0",
+  "description": "The Github Pages link for this website is here : https://beryl-18.github.io/e-commerce-lessonplan/ The public respository link for this website is here : https://github.com/Beryl-18/e-commerce-lessonplan",
+  "main": "lessons.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Beryl-18/e-commerce-lesson-plan-nodejs-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Beryl-18/e-commerce-lesson-plan-nodejs-/issues"
+  },
+  "homepage": "https://github.com/Beryl-18/e-commerce-lesson-plan-nodejs-#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
