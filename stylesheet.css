@@ -1,0 +1,185 @@
+/* Direct document styling*/
+body{
+    margin:0;
+    background-color:white;
+}
+
+/* Styling for the navbar */
+#navbar {
+    display:block;
+    background-color:#e8e8e8;
+    height:7%;
+    padding:20px;
+    padding-left:45px;
+    padding-right:45px;
+    border:10px;
+
+
+}
+#searchbox{
+    float:left;
+    padding:10px;
+    width: 19%;
+    font-size:small;
+    border-radius: 7px;
+    border: 2px solid #c5c6c7;
+    background-color:#c5c6c7;
+    box-shadow: 1px 1px 18px -1px #1f2833;
+}
+#searchbox:focus, :hover{
+    border: 2px solid #c5c6c7;
+    background-color:white;
+}
+
+.checkoutCart{
+    padding:15px;
+    background-color:#5d001e;
+    border: 2px solid #5d001e;
+    border-radius: 5px;
+    background-color:#5d001e;
+    color:white;
+    font-weight: bold;
+    transition:0.4s;
+    float:right;
+    box-shadow: 1px 1px 18px -1px #1f2833;
+}
+.checkoutCart:hover:enabled{
+    background-color:#9a1750;
+    border: 2px solid #9a1750;
+    transition:0.4s;
+}
+
+/* Styling for the sort bar */
+#sortBar{
+    background-color:#1f2833;
+    padding:20px;
+    color:white;
+    box-shadow: 1px 1px 18px -1px #1f2833;
+    text-align:center;
+}
+#sortSelect{
+    padding:10px;
+    background-color:auto;
+    border-color:black;
+}
+.sortOption{
+    margin-left:23px;
+    margin-right:23px;
+}
+
+/* Styling for the Lesson info div */
+#lessonBlock{
+    background-color: #c5c6c7;
+    box-shadow: 1px 1px 18px -1px #1f2833;
+    color:#0B0C10;
+    padding-bottom:2.5%;
+    width:24%;
+    height:50%;
+    margin:3.4%;
+    border:3%;
+    display:inline-block;
+}
+#lessonInfoSub{
+    font-size:larger;
+    font-weight: bold;
+}
+#lessonBlock img {
+    width:100%;
+    height:60%;
+}
+#infoContainer{
+    padding:20px;
+}
+.addToCartButton{
+    color:white;
+    background-color:#5d001e;
+    box-shadow: 1px 1px 18px -1px #1f2833;
+    border: 2px solid #5d001e;
+    transition:0.4s;
+    width:100%;
+    height:15%;
+}
+.addToCartButton:disabled{
+    color:black;
+}
+.addToCartButton:hover:enabled{
+    background-color:#9a1750;
+    border: 2px solid #9a1750;
+    transition:0.4s;
+}
+.lessonInfo{
+    padding:5px;
+    display:block;
+}
+
+/* Styling for the Checkout Page */
+#cartDisplayDiv{
+    background-color:#1f2833;
+    padding:20px;
+    color:white;
+    margin:35px;
+
+}
+#cartDisplayDiv h2{
+    text-align: center;
+}
+
+#checkoutLessonsContainer{
+    background-color:#e8e8e8;
+    text-align: center;
+    color:black;
+    width:98%;
+    margin:15px;
+}
+
+#checkout-customer-details{
+    text-align: center;
+    padding:10px;
+    margin:30px;
+}
+#checkout-customer-details input:disabled{
+    background-color:#c5c6c7;
+}
+.customer-details-inner-item{
+    margin-left:16px;
+    margin-right:16px;
+}
+.checkout-btn{
+    color:white;
+    padding:10px;
+    background-color:#5d001e;
+    border: 2px solid #5d001e;
+    transition:0.4s;
+    height:relative;
+    width:10%;
+}
+.checkout-btn:hover:enabled{
+    background-color:#9a1750;
+    border: 2px solid #9a1750;
+    transition:0.4s;
+}
+.checkout-inner{
+    padding:20px;
+}
+.checkout-info{
+    margin-left:10px;
+    margin-right:10px;
+    padding:20px;
+}
+.remove-btn{
+    color:white;
+    background-color:#5d001e;
+    border: 2px solid #5d001e;
+    transition:0.4s;
+    padding:10px;
+    height:relative;
+    width:15%;
+}
+.remove-btn:hover{
+    background-color:#9a1750;
+    border: 2px solid #9a1750;
+    transition:0.4s;
+}
+.error{
+    color:red;
+}
