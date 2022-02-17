@@ -1,5 +1,5 @@
 const express = require('express');
-const http = require('http');
+
 
 //starting a new express app
 const app = express();
@@ -19,12 +19,12 @@ const app = express();
 //     response.end("happy valentine's day at request " + request.url);
 // });
 
-app.get("/hello",function(request, response){
-    var q = request.query.search;
-    console.log(q);
-    response.send(q);
-
+//Middlware that logs all incoming requests
+app.use('/',function(request,response){
+    console.log("REQUEST URL: " + request.url);
+    console.log("REQUEST METHOD: " + request.method);
+    
 });
 
 
-http.createServer(app).listen(3000);
+app.listen(3000);

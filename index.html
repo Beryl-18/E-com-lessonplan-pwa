@@ -205,6 +205,15 @@
                         document.location.reload();
                     }
                 },
+                created: {
+                   //function to retrieve lessons information --> json
+                   function(){
+                       fetch("https://localhost:3000").then(function(response){
+                           
+                       })
+                   }
+
+                },
                 computed:{
                     //Returns total number of items in the cart
                     cartAggregate(){
