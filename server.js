@@ -1,30 +1,43 @@
+//importing necessary dependencies
 const express = require('express');
-
-
-//starting a new express app
 const app = express();
+const MongoClient = require('mongodb').MongoClient;
 
-// app.get("/error", function (request, response){
-//     console.log("invalid entry");
-//     response.end("sorry boss");
-// })
+//connecting to mongodbclient
+let db; 
+MongoClient.connect('mongodb+srv://beryl3145:berylabeysam@cluster0.ocqvc.mongodb.net/3145',(err,client) => {
+    db = client.db('3145');
+})
 
-// app.get("/checkingorigin",function (request,response, next){
+app.use(express.json());
 
-//     console.log("comes a request for "+request.url + "With method "+ request.method);
-//     next();
 
-// });
-// app.use(function(request,response){
-//     response.end("happy valentine's day at request " + request.url);
-// });
+//handling the collection request
+app.param('collectionName', function(req, res, next){
+    req.collection = db.collection(collectionName);
+    return next();
 
-//Middlware that logs all incoming requests
-app.use('/',function(request,response){
-    console.log("REQUEST URL: " + request.url);
-    console.log("REQUEST METHOD: " + request.method);
-    
 });
 
+//retrieving and sending collection requests
+app.get('/collection/:collectionName', (req, res, next) => {
+    req.collection.find({}).toArray((e,results) =>{
+        if (e) next (e)
+        res.send(results);
+    })
+});
+
+//creating a default get request handler
+app.get('/', function (request,response){
+    response.send("please select a route - eg. /collection/collectionName");
+})
+
+//handling post insert requests
+app.post('/collection/:collectionName', (req, res, next) =>{
+    req.collectionName.insert(req.body, (e,results) =>{
+        if(e) next (e)
+        res.send(results.ops)
+    })
+})
 
 app.listen(3000);
