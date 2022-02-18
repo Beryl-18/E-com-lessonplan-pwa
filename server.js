@@ -48,14 +48,6 @@ app.use(function(req, res, next) {
     });
 });
 
-//Error Handling Middleware
-app.use(function(req, res, ){
-
-    //Setting Response status to 400, result in file not found
-    res.status(404);
-    res.send("File Not Found");
-})
-
 //Handling Fetch
 //default Get request
 app.get('/', (req,res) =>{
@@ -106,6 +98,15 @@ app.put('/collection/:collectionName/:id', (req, res, next) => {
         res.send(result.modifiedCount === 1 ? {msg: "success"} : {msg: "error"})
       })
   })
+
+
+//Error Handling Middleware
+app.use(function(req, res, ){
+
+    //Setting Response status to 400, result in file not found
+    res.status(404);
+    res.send("File Not Found");
+})
 
 //App Listening at port 3000
 const port = process.env.PORT || 3000;
