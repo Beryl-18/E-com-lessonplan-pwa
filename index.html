@@ -2,7 +2,7 @@
     <head>
         <!-- linking the external files from font awesome and vuejs-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-        <script src = "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src = "https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
         <!-- linking external stylesheet-->
         <script src="lessons.js"></script>
@@ -132,7 +132,7 @@
                 el:'#lessonplanapp',
                 //Data variables used in the page
                 data:{
-                    lessons:{},
+                    lessons:[],
                     checkoutLogic: true,
                     ascending: true,
                     type:'',
@@ -150,7 +150,7 @@
                    //function to retrieve lessons information --> json  
                        fetch("http://localhost:3000/collection/lessons").then(
                            function(response){
-                               response.json.then(
+                               response.json().then(
                                    function (json){
                                        webstore.lessons = json;
                                    }
@@ -257,10 +257,13 @@
                         if (search.length <= 0){
 
                             if (this.ascending){
-                                return this.lessons.sort(compare);
+                                // return this.lessons.sort(compare);
+                                webstore.lessons;
                             }
                             else if (!this.ascending){
-                                return this.lessons.sort(compare).reverse();
+                                // return this.lessons.sort(compare).reverse();
+                                webstore.lessons;
+                                
                             }
                         }
                         else if( search.length > 0){

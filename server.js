@@ -66,17 +66,16 @@ app.post('/collection/:collectionName', (req, res, next) =>{
 })
 
 //handling update requests for spaces
-app.put('/collection/:collectionName/:id/', (req, res, next) =>{
-    // var updatedSpace;
+app.put('/collection/:collectionName/:id', (req, res, next) => {
     req.collection.updateOne(
-        { _id: new ObjectID(req.params.id)},
-        { $set : req.body},
-        {$safe : true, multi : false},
-    ),(e,result) =>{
-        if (e) return next (e)
-        res.end(result.modifiedcount === 1 ? {msg : "success"} : {msg : "error"})
-    }
-})
+      {_id: new ObjectID(req.params.id)},
+      {$set: req.body},
+      {safe: true, multi: false},
+      (e, result) => {
+        if (e) return next(e)
+        res.send(result.modifiedCount === 1 ? {msg: "success"} : {msg: "error"})
+      })
+  })
 
 //App Listening at port 3000
 const port = process.env.PORT || 3000;
