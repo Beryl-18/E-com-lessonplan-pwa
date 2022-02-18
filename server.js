@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
 const cors = require('cors');
+var path = require("path");
+var fs = require("fs");
 
 //using cors
 app.use(cors());
@@ -30,7 +32,32 @@ app.use('/', (req,res,next) => {
     next();
 });
 
-//default request
+//Static Image File Handler
+app.use(function(req, res, next) {
+    var filePath = path.join(__dirname, "images", req.url);
+    fs.stat(filePath, function(err, fileInfo) {
+        if (err) {
+            next();
+            return;
+        }
+
+        if (fileInfo.isFile())
+            res.sendFile(filePath);
+        else 
+            next();
+    });
+});
+
+//Error Handling Middleware
+app.use(function(req, res, ){
+
+    //Setting Response status to 400, result in file not found
+    res.status(404);
+    res.send("File Not Found");
+})
+
+//Handling Fetch
+//default Get request
 app.get('/', (req,res) =>{
     res.send("please select a /collection");
 })
@@ -56,6 +83,8 @@ app.get('/collection/:collectionName/:id', (req, res, next) => {
 app.get('/collection', function (request,response){
     response.send("please select a route - eg. /collection/collectionName");
 })
+
+
 
 //handling post insert requests
 app.post('/collection/:collectionName', (req, res, next) =>{
