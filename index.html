@@ -2,11 +2,11 @@
     <head>
         <!-- linking the external files from font awesome and vuejs-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-        <script src = "https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <script src = "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-        <!-- linking external stylesheet-->
-        <script src="lessons.js"></script>
+        <!-- linking the lesson plan script and external stylesheet-->
         <link rel="stylesheet" href="stylesheet.css">
+
     </head>
     <body>
 
@@ -161,6 +161,7 @@
                        ).catch(err =>console.log(err));
 
                 },
+
                 //methods used within the page
                 methods:{
                     //Validating whether course can be added to cart
@@ -257,13 +258,10 @@
                         if (search.length <= 0){
 
                             if (this.ascending){
-                                // return this.lessons.sort(compare);
-                                webstore.lessons;
+                                return this.lessons.sort(compare);
                             }
                             else if (!this.ascending){
-                                // return this.lessons.sort(compare).reverse();
-                                webstore.lessons;
-                                
+                                return this.lessons.sort(compare).reverse();
                             }
                         }
                         else if( search.length > 0){
