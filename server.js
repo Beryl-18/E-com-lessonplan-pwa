@@ -73,6 +73,7 @@ app.put('/collection/:collectionName/:id', (req, res, next) => {
       {safe: true, multi: false},
       (e, result) => {
         if (e) return next(e)
+        res.setHeader('Access-Control-Allow-Origin','*');
         res.send(result.modifiedCount === 1 ? {msg: "success"} : {msg: "error"})
       })
   })

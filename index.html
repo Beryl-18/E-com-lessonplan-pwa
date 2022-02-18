@@ -149,8 +149,7 @@
                 created: function(){
 
                    //function to retrieve lessons information --> json  
-                       fetch("http://localhost:3000/collection/lessons").then(
-                        // fetch ("http://localhost:3000/collection/lessons").then(
+                       fetch("https://lessonsapp-3145.herokuapp.com/collection/lessons").then(
                            function(response){
                                response.json().then(
                                    function (json){
@@ -177,8 +176,6 @@
 
                     //Function to push items to cart
                     addtoCart(course){
-
-                        console.log(lessons);
                         let lessonIncart = this.cart.find(i => i.id == course.id);
                         if (lessonIncart){
                             lessonIncart.quantity++;
@@ -224,10 +221,8 @@
                             "Phone":webstore.checkoutDetails.phone,
                             "products":webstore.cart
                         };
-                        console.log(order);
 
                         fetch ('https://lessonsapp-3145.herokuapp.com/collection/orders', {
-                            // fetch('http://localhost:3000/collection/orders',{
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json',
                         },
@@ -237,21 +232,18 @@
                         })
 
                         //Updating Existing Lessons in mongo
-                        /*
-                        create a for loop that will run through all the items in the cart. then retrieve item space and update
-                        */
-                       for (var c = 0; c < cart.length; c++) {
-                           var updatedSpace = {"spaces":cart[c].spaces};
+                       for (var c = 0; c < webstore.cart.length; c++) {
+                           var updatedSpace = {"spaces":webstore.cart[c].spaces};
 
-                           path = 'https://lessonsapp-3145.herokuapp.com/collection/lessons/';
-                           fetch(path, {
+                           fetch( "https://lessonsapp-3145.herokuapp.com/collection/lessons/".concat(webstore.cart[c]._id), {
                                method: 'PUT',
                                headers: {
                                    'Content-Type': 'application/json',
+
                                },
                                body: JSON.stringify(updatedSpace),
                            }).then (response => response.json()).then(responseJSON =>{
-                               console.log("Sucess"+responseJSON);
+                               console.log("Sucess: "+responseJSON);
                            })
 
                        }
