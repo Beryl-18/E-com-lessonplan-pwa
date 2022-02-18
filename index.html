@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
         <script src = "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-        <!-- linking the lesson plan script and external stylesheet-->
+        <!-- linking external stylesheet-->
         <script src="lessons.js"></script>
         <link rel="stylesheet" href="stylesheet.css">
     </head>
@@ -132,7 +132,7 @@
                 el:'#lessonplanapp',
                 //Data variables used in the page
                 data:{
-                    lessons:lessons,
+                    lessons:{},
                     checkoutLogic: true,
                     ascending: true,
                     type:'',
@@ -143,6 +143,22 @@
                         fullName: '',
                         phone:''
                     }
+
+                },
+                // fetch methods to run at vue instance creation
+                created: function(){
+                   //function to retrieve lessons information --> json  
+                       fetch("http://localhost:3000/collection/lessons").then(
+                           function(response){
+                               response.json.then(
+                                   function (json){
+                                       webstore.lessons = json;
+                                   }
+                               )
+                               console.log(lessons);
+                            }
+                            
+                       ).catch(err =>console.log(err));
 
                 },
                 //methods used within the page
@@ -204,15 +220,6 @@
                         this.cart.splice(0, this.cart.length);
                         document.location.reload();
                     }
-                },
-                created: {
-                   //function to retrieve lessons information --> json
-                   function(){
-                       fetch("https://localhost:3000").then(function(response){
-                           
-                       })
-                   }
-
                 },
                 computed:{
                     //Returns total number of items in the cart

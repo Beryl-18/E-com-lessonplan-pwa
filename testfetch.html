@@ -1,0 +1,26 @@
+<html>
+    <body>
+    <script language="JavaScript">
+        // var request = new XMLHttpRequest();
+        // request.open("GET",'http://localhost:3000');
+        // request.responseText = 'text';
+        // request.onload = function() {
+        //     alert(request.response);
+        // }
+        // request.send();
+
+        // regular GET fetch request
+        var name;
+        fetch ("http://localhost:3000").then(
+            function(response){
+                response.json().then({
+                    function (json){
+                        name = json
+                    }
+                })
+                console.log("this is the json "+JSON.stringify(name));
+                alert(JSON.stringify(name));
+            })
+    </script>
+    </body>
+</html>

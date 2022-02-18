@@ -4,7 +4,7 @@
   "description": "The Github Pages link for this website is here : https://beryl-18.github.io/e-commerce-lessonplan/ The public respository link for this website is here : https://github.com/Beryl-18/e-commerce-lessonplan",
   "main": "lessons.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Beryl-18/e-commerce-lesson-plan-nodejs-#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.2",
     "mongod": "^2.0.0",
     "mongodb": "^4.3.1",
