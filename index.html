@@ -147,15 +147,16 @@
                 },
                 // fetch methods to run at vue instance creation
                 created: function(){
+
                    //function to retrieve lessons information --> json  
-                       fetch("http://localhost:3000/collection/lessons").then(
+                       fetch("https://lessonsapp-3145.herokuapp.com/collection/lessons").then(
+                        // fetch ("http://localhost:3000/collection/lessons").then(
                            function(response){
                                response.json().then(
                                    function (json){
                                        webstore.lessons = json;
                                    }
                                )
-                               console.log(lessons);
                             }
                             
                        ).catch(err =>console.log(err));
@@ -177,6 +178,7 @@
                     //Function to push items to cart
                     addtoCart(course){
 
+                        console.log(lessons);
                         let lessonIncart = this.cart.find(i => i.id == course.id);
                         if (lessonIncart){
                             lessonIncart.quantity++;
@@ -215,6 +217,46 @@
                     
                     //Function to process Checkout
                     checkoutConfirm(){
+
+                        //Insert Order into orders mongodb
+                        var order = {
+                            "Name":webstore.checkoutDetails.fullName,
+                            "Phone":webstore.checkoutDetails.phone,
+                            "products":webstore.cart
+                        };
+                        console.log(order);
+
+                        fetch ('https://lessonsapp-3145.herokuapp.com/collection/orders', {
+                            // fetch('http://localhost:3000/collection/orders',{
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json',
+                        },
+                            body: JSON.stringify(order),
+                        }).then(response => response.json()).then(responseJSON => {
+                            console.log("Success"+responseJSON);
+                        })
+
+                        //Updating Existing Lessons in mongo
+                        /*
+                        create a for loop that will run through all the items in the cart. then retrieve item space and update
+                        */
+                       for (var c = 0; c < cart.length; c++) {
+                           var updatedSpace = {"spaces":cart[c].spaces};
+
+                           path = 'https://lessonsapp-3145.herokuapp.com/collection/lessons/';
+                           fetch(path, {
+                               method: 'PUT',
+                               headers: {
+                                   'Content-Type': 'application/json',
+                               },
+                               body: JSON.stringify(updatedSpace),
+                           }).then (response => response.json()).then(responseJSON =>{
+                               console.log("Sucess"+responseJSON);
+                           })
+
+                       }
+
+                        //Alert Order placed
                         alert("Order has been placed for " + this.checkoutDetails.fullName +". Thank you!");
 
                         //reset cart and refresh the page
