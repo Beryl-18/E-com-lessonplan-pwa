@@ -4,7 +4,7 @@
     "description": "E commerce website selling lesson spaces",
     "icons" : [
         {
-        "Src": "images/icon.png",
+        "src": "images/icon.png",
         "size": "512x512",
         "type": "image/png"
         }
