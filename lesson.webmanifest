@@ -1,0 +1,16 @@
+{
+    "name":"E Commerce Lesson PWA",
+    "short_name": "E Com Lesson",
+    "description": "E commerce website selling lesson spaces",
+    "icons" : [
+        {
+        "Src": "images/icon.png",
+        "size": "512x512",
+        "type": "image/png"
+        }
+    ],
+    "start_url":"index.html",
+    "display":"fullscreen",
+    "background_color" : "rgb(24,25,27)"
+
+}
