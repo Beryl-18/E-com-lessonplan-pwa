@@ -5,6 +5,13 @@
         <script src = "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <link rel="manifest" href="lesson.webmanifest">
 
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('service-worker.js');
+            };
+        </script>
+
+
         <!-- linking the lesson plan script and external stylesheet-->
         <link rel="stylesheet" href="stylesheet.css">
 
