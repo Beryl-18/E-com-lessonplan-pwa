@@ -2,6 +2,8 @@ var cacheName = 'lesson-v1';
 var cacheFiles = [
   'index.html',
   'server.js',
+  'package.json',
+  'package-lock.json',
   'stylesheet.css',
   'lesson.webmanifest',
   'images/biology.jpg',
@@ -15,6 +17,5 @@ var cacheFiles = [
   'images/math.jpg',
   'images/music.jpg',
   'images/pottery.jpg',
-  'images/soccer.png',
-  'images/icon-store-512.png'
+  'images/soccer.png'
 ];
