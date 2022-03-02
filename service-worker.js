@@ -1,7 +1,8 @@
-var cacheName = 'lesson-v1';
+var cacheName = 'lesson-main-v1';
 var cacheFiles = [
   'index.html',
   'server.js',
+  'service-worker.js',
   'package.json',
   'package-lock.json',
   'stylesheet.css',
@@ -13,33 +14,20 @@ var cacheFiles = [
   'images/culinary.jps.jpeg',
   'images/finance.jpg',
   'images/french.jpg',
-  'images/icon.png',
+  'images/icon-512.png',
   'images/math.jpg',
   'images/music.jpg',
   'images/pottery.jpg',
-  'images/soccer.png',
-  'service-worker.js'
+  'images/soccer.png'
 ];
 
-self.addEventListener('install', (e) =>{
-  console.log('[Service Worker] Install');
+self.addEventListener('install', (e) => {
   e.waitUntil(
       caches.open(cacheName).then((cache) => {
           console.log("[Service Worker] Caching all the files");
           return cache.addAll(cacheFiles);
       })
-  )
-})
-
-self.addEventListener('fetch', function (e) {
-    e.respondWith(
-        // check if the cache has the file
-        caches.match(e.request).then(function (r) {
-            console.log('[Service Worker] Fetching resource: '
-              + e.request.url);
-            // 'r' is the matching file if it exists in the cache
-    return r })
-  ); 
+  );
 });
 
 self.addEventListener( 'fetch', function (e) {
