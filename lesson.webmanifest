@@ -1,7 +1,7 @@
 {
-    "name": "My Pet Store PWA",
-    "short_name": "petstore",
-    "description": "my online pet store",
+    "name": "E Com Lessons PWA",
+    "short_name": "Ecom Lessons",
+    "description": "my online lessons e-commerce website",
     "icons": [
         {
             "src": "images/icon-512.png",
