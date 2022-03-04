@@ -68,6 +68,7 @@ body{
 }
 
 /* Styling for the Lesson info div */
+
 #lessonBlock{
     background-color: #c5c6c7;
     box-shadow: 1px 1px 18px -1px #1f2833;
@@ -79,6 +80,14 @@ body{
     border:3%;
     display:inline-block;
 }
+@media only screen and (max-width: 780px) {
+  #lessonBlock {
+    width: 100%;
+    margin:1%;
+    borer:2%;
+  }
+}
+
 #lessonInfoSub{
     font-size:larger;
     font-weight: bold;
